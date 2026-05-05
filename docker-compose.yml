@@ -1,0 +1,9 @@
+services:
+  teamscale:
+    image: 'cqse/teamscale:2026.3.latest'
+    restart: unless-stopped
+    working_dir: /var/teamscale
+    volumes:
+      - ./data:/var/teamscale
+    ports:
+      - "8080:8080"
