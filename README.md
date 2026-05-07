@@ -1,9 +1,6 @@
-# Teamscale Docker Evaluation
-
-Minimal Docker Compose setup to evaluate Teamscale locally.                                                                                                                                              
+# Teamscale Simple Docker Setup                                                                                                                                          
 > [!IMPORTANT]
-> For production deployments with HTTPS, multi-user reverse-proxy topology, and zero-downtime          
-feature-version upgrades, see [cqse/teamscale-docker-deployment](https://github.com/cqse/teamscale-docker-deployment) instead.
+> This is a simplified setup to run Teamscale on your local machine. It is not recommended for production usage. For production deployments see [cqse/teamscale-docker-deployment](https://github.com/cqse/teamscale-docker-deployment) instead.       
 
 
 ## Quickstart
@@ -14,28 +11,6 @@ feature-version upgrades, see [cqse/teamscale-docker-deployment](https://github.
    docker compose up -d
    ```
 3. Open <http://localhost:8080>.
-
-## Common tasks
-
-Stop:
-```sh
-docker compose down
-```
-
-View logs:
-```sh
-docker compose logs -f
-```
-
-Update to the latest patch release:
-```sh
-docker compose pull && docker compose up -d
-```
-
-Wipe and start over (the license file in `data/config/` is preserved):
-```sh
-docker compose down && rm -rf data/storage data/logs && docker compose up -d
-```
 
 ## Tweaking the setup
 
@@ -71,9 +46,3 @@ services:
 ```
 
 Full property list: [Configuring Teamscale](https://docs.teamscale.com/reference/administration-ts-installation/#configuring-teamscale).
-
-## Pinning a different version
-
-Edit the `image:` line in `docker-compose.yml`. Available tags are listed at [hub.docker.com/r/cqse/teamscale/tags](https://hub.docker.com/r/cqse/teamscale/tags).
-
-There is no `latest` tag because feature-version upgrades require re-analysis. Pin to a specific feature line: `2026.3.latest` rolls forward across patches automatically. `2026.3.2` is frozen to one patch release.
